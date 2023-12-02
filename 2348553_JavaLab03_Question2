@@ -1,0 +1,26 @@
+class Employee:
+    def __init__(self, employee_id, employee_name, designation):
+        self.employee_id = employee_id
+        self.employee_name = employee_name
+        self.designation = designation
+
+    def display_info(self):
+        print(f"Employee ID: {self.employee_id}")
+        print(f"Employee Name: {self.employee_name}")
+        print(f"Designation: {self.designation}")
+
+
+class HourlyEmployee(Employee):
+    def __init__(self, employee_id, employee_name, designation, hourly_rate, hours_worked):
+        super().__init__(employee_id, employee_name, designation)
+        self.hourly_rate = hourly_rate
+        self.hours_worked = hours_worked
+
+    def calculate_weekly_salary(self):
+        return self.hourly_rate * self.hours_worked
+
+    def display_info(self):
+        super().display_info()
+        print(f"Hourly Rate: ${self.hourly_rate}")
+        print(f"Hours Worked: {self.hours_worked}")
+        print(f"Weekly
