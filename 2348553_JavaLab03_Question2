@@ -1,26 +1,52 @@
-class Employee:
-    def __init__(self, employee_id, employee_name, designation):
-        self.employee_id = employee_id
-        self.employee_name = employee_name
-        self.designation = designation
-
-    def display_info(self):
-        print(f"Employee ID: {self.employee_id}")
-        print(f"Employee Name: {self.employee_name}")
-        print(f"Designation: {self.designation}")
+ // Now, we need to create objects for each and every class to showcase the functionalities
 
 
-class HourlyEmployee(Employee):
-    def __init__(self, employee_id, employee_name, designation, hourly_rate, hours_worked):
-        super().__init__(employee_id, employee_name, designation)
-        self.hourly_rate = hourly_rate
-        self.hours_worked = hours_worked
+    class EmployeePayrollTest {
+    public static void main(String[] args) {
 
-    def calculate_weekly_salary(self):
-        return self.hourly_rate * self.hours_worked
+        // Creating objects of each employee type
 
-    def display_info(self):
-        super().display_info()
-        print(f"Hourly Rate: ${self.hourly_rate}")
-        print(f"Hours Worked: {self.hours_worked}")
-        print(f"Weekly
+        HourlyEmployee hourlyEmployee = new HourlyEmployee(101, "BadriNarayanan S", "Developer", 15.5, 40);
+        SalariedEmployee salariedEmployee = new SalariedEmployee(102, "Gaikwad M", "Manager", 5000);
+        ExecutiveEmployee executiveEmployee = new ExecutiveEmployee(103, "George L", "Executive", 10000, 15);
+
+        // Displaying detailed information for each employee
+
+        System.out.println("Employee Information:");
+        System.out.println("---------------------");
+        System.out.println("Hourly Employee Details:");
+        hourlyEmployee.displayInfo();
+        System.out.println("\nSalaried Employee Details:");
+        salariedEmployee.displayInfo();
+        System.out.println("\nExecutive Employee Details:");
+        executiveEmployee.displayInfo();
+        System.out.println("----------------------");
+
+        // Calculating and display bonus for each employee
+
+        System.out.println("\nBonus Calculation:");
+        System.out.println("--------------------");
+        System.out.println("Hourly Employee Bonus: $" + hourlyEmployee.calculateBonus());
+        System.out.println("Salaried Employee Bonus: $" + salariedEmployee.calculateBonus());
+        System.out.println("Executive Employee Bonus: $" + executiveEmployee.calculateBonus());
+        System.out.println("---------------------");
+
+        // Calculating and display annual earnings for each employee
+
+        System.out.println("\nAnnual Earnings:");
+        System.out.println("------------------");
+        System.out.println("Hourly Employee Annual Earnings: $" + hourlyEmployee.calculateWeeklyEarnings() * 52); // 52 weeks in a year
+        System.out.println("Salaried Employee Annual Earnings: $" + salariedEmployee.getMonthlySalary() * 12);
+        System.out.println("Executive Employee Annual Earnings: $" + executiveEmployee.getMonthlySalary() * 12);
+        System.out.println("-------------------");
+
+        // Calculating and displaying total payroll
+
+        double totalPayroll = hourlyEmployee.calculateWeeklyEarnings() * 52 +
+                salariedEmployee.getMonthlySalary() * 12 +
+                executiveEmployee.getMonthlySalary() * 12;
+        System.out.println("\nTotal Payroll: $" + totalPayroll);
+    }
+}
+
+    
